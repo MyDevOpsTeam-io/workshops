@@ -1,0 +1,138 @@
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.107.0"><meta name=description content="mydevopsteam.io workshop"><meta name=author content="mydevopsteam.io"><title>Containerizing golang application - MyDevOpsTeam WorkShops</title><link href=/css/nucleus.css?1681657570 rel=stylesheet><link href=/css/fontawesome-all.min.css?1681657570 rel=stylesheet><link href=/css/hybrid.css?1681657570 rel=stylesheet><link href=/css/featherlight.min.css?1681657570 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1681657570 rel=stylesheet><link href=/css/auto-complete.css?1681657570 rel=stylesheet><link href=/css/atom-one-dark-reasonable.css?1681657570 rel=stylesheet><link href=/css/theme.css?1681657570 rel=stylesheet><link href=/css/tabs.css?1681657570 rel=stylesheet><link href=/css/hugo-theme.css?1681657570 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1681657570></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style></head><body data-url=/containerization/docker/containerizing-golang-application/><nav id=sidebar class=showVisitedLinks><div id=header-wrapper><div id=header><a id=logo href=/><img src=/images/MyDevOpsTeam-Logo.png width=200 height=80 alt=mydevopsteam.io><br><b>MyDevOpsTeam Workshops</b></a></div><div class=searchbox><label for=search-by><i class="fas fa-search"></i></label>
+<input data-search-input id=search-by type=search placeholder=Search...>
+<span data-search-clear><i class="fas fa-times"></i></span></div><script type=text/javascript src=/js/lunr.min.js?1681657570></script>
+<script type=text/javascript src=/js/auto-complete.js?1681657570></script>
+<script type=text/javascript>var baseurl="https://workshops.mydevopsteam.io"</script><script type=text/javascript src=/js/search.js?1681657570></script></div><section id=homelinks><ul><li><a class=padding href=/><i class='fas fa-home'></i> Home</a></li></ul></section><div class=highlightable><ul class=topics><li data-nav-id=/overview/ title="Basic Overview" class=dd-item><a href=/overview/>Basic Overview
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/overview/agenda/ title="Agenda overview" class=dd-item><a href=/overview/agenda/>Agenda overview
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/overview/about-us/ title="About mydevopsteam.io" class=dd-item><a href=/overview/about-us/>About mydevopsteam.io
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/overview/devops-overview/ title="DevOps Overview" class=dd-item><a href=/overview/devops-overview/>DevOps Overview
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/overview/prerequisite/ title=Pre-requisites class=dd-item><a href=/overview/prerequisite/>Pre-requisites
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/issue-tracking/ title="Agile & Issue Tracking" class=dd-item><a href=/issue-tracking/>Agile & Issue Tracking
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/automated-testing/ title="Automated Testing" class=dd-item><a href=/automated-testing/>Automated Testing
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/cicd/ title=CI/CD class=dd-item><a href=/cicd/>CI/CD
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/cloud/ title=Cloud class=dd-item><a href=/cloud/>Cloud
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/configuration-management/ title="Configuration Management" class=dd-item><a href=/configuration-management/>Configuration Management
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/containerization/ title=Containerization class="dd-item
+parent"><a href=/containerization/>Containerization
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/containerization/docker/ title=Docker class="dd-item
+parent"><a href=/containerization/docker/>Docker
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/containerization/docker/docker-installation/ title="Docker installation" class=dd-item><a href=/containerization/docker/docker-installation/>Docker installation
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/containerization/docker/creating-first-container/ title="Creating your first docker container" class=dd-item><a href=/containerization/docker/creating-first-container/>Creating your first docker container
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/containerization/docker/containerizing-golang-application/ title="Containerizing golang application" class="dd-item active"><a href=/containerization/docker/containerizing-golang-application/>Containerizing golang application
+<i class="fas fa-check read-icon"></i></a></li></ul></li></ul></li><li data-nav-id=/infrastructure-as-code/ title="Infrastructure As Code" class=dd-item><a href=/infrastructure-as-code/>Infrastructure As Code
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/observability/ title=Observability class=dd-item><a href=/observability/>Observability
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/operations/ title=Operations class=dd-item><a href=/operations/>Operations
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/orchestration/ title=Orchestration class=dd-item><a href=/orchestration/>Orchestration
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/packaging/ title=Packaging class=dd-item><a href=/packaging/>Packaging
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/proxy/ title=Proxy class=dd-item><a href=/proxy/>Proxy
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/security/ title=Security class=dd-item><a href=/security/>Security
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/serverless/ title=Serveless class=dd-item><a href=/serverless/>Serveless
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/servicemesh/ title="Service Mesh" class=dd-item><a href=/servicemesh/>Service Mesh
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/tools/ title=Tools class=dd-item><a href=/tools/>Tools
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/credits/ title=Credits class=dd-item><a href=/credits/>Credits
+<i class="fas fa-check read-icon"></i></a></li></ul><section id=shortcuts><h3>More</h3><ul><li><a class=padding href=https://workshops.mydevopsteam.io/tags><i class='fas fa-tags'></i> Tags</a></li></ul></section><section id=prefooter><hr><ul><li><a class=padding href=# data-clear-history-toggle><i class="fas fa-history fa-fw"></i> Clear History</a></li></ul></section><section id=footer><p>Built with <a href=https://github.com/matcornic/hugo-theme-learn><i class="fas fa-heart"></i></a> from <a href=https://getgrav.org>Grav</a> and <a href=https://gohugo.io/>Hugo</a></p></section></div></nav><section id=body><div id=overlay></div><div class="padding highlightable"><div><div id=top-bar><div id=top-github-link><a class=github-link title='Edit this page' href=https://github.com/MyDevOpsTeam-io/workshop-gh-src/tree/master/workshop/content/Containerization/Docker/containerizing-golang-application.md target=blank><i class="fas fa-code-branch"></i>
+<span id=top-github-link-text>Edit this page</span></a></div><div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb><span id=sidebar-toggle-span><a href=# id=sidebar-toggle data-sidebar-toggle><i class="fas fa-bars"></i></a></span>
+<span id=toc-menu><i class="fas fa-list-alt"></i></span>
+<span class=links><a href=/>mydevopsteam.io workshops</a> > <a href=/containerization/>Containerization</a> > <a href=/containerization/docker/>Docker</a> > Containerizing golang application</span></div></div></div><div id=head-tags><div class=tags><a class=tag-link href=/tags/container>container</a>
+<a class=tag-link href=/tags/beginner>beginner</a>
+<a class=tag-link href=/tags/basic>basic</a>
+<a class=tag-link href=/tags/go>Go</a>
+<a class=tag-link href=/tags/docker>Docker</a></div></div><div id=body-inner><h1>Containerizing golang application</h1><p><img src="/images/MyDevOpsTeam-Logo.png?width=20pc" alt=MyDevOpsTeam>
+<img src="/images/golang.png?width=15pc" alt=Golang></p><h3 id=what-is-go>What is Go?</h3><p>Go is a statically typed, compiled high-level programming language designed at Google by Robert Griesemer, Rob Pike, and Ken Thompson. It is syntactically similar to C, but with memory safety, garbage collection, structural typing, and CSP-style concurrency.</p><h3 id=prerequisite>Prerequisite:</h3><ul><li><a href=https://www.gnu.org/software/make/>Make CLI (GNU Make)</a></li><li><a href=https://docker.com>Docker CLI</a></li></ul><h3 id=create-your-first-golang-app>Create your first golang app:</h3><ol><li>Create your <code>hello-world-go</code> project:</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>mkdir go-rest-helloworld
+</span></span><span style=display:flex><span>cd go-rest-helloworld
+</span></span><span style=display:flex><span>go mod init golang/go-rest-helloworld
+</span></span></code></pre></div><ol start=2><li>Create <code>Makefile</code> to build your go app to avoid repeatable commands:
+Fire up the editor and add the ff:</li></ol><p>Then, add the following content:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>FILE <span style=color:#f92672>=</span> main.go
+</span></span><span style=display:flex><span>BINARY <span style=color:#f92672>=</span> main
+</span></span><span style=display:flex><span>IMAGE <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;go-helloworld:latest&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>build: <span style=color:#66d9ef>$(</span>FILE<span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span>	echo <span style=color:#e6db74>&#34;[INFO]: Building package </span><span style=color:#66d9ef>$(</span>FILE<span style=color:#66d9ef>)</span><span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>	go mod tidy <span style=color:#f92672>&amp;&amp;</span> go build -o main <span style=color:#66d9ef>$(</span>FILE<span style=color:#66d9ef>)</span> <span style=color:#f92672>&amp;&amp;</span> chmod +x <span style=color:#66d9ef>$(</span>FILE<span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>run:
+</span></span><span style=display:flex><span>	echo <span style=color:#e6db74>&#34;[*] Running the hello-world-app....&#34;</span>
+</span></span><span style=display:flex><span>	./<span style=color:#66d9ef>$(</span>BINARY<span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>build-image:
+</span></span><span style=display:flex><span>	echo <span style=color:#e6db74>&#34;[INFO]: Docker image </span><span style=color:#66d9ef>$(</span>IMAGE<span style=color:#66d9ef>)</span><span style=color:#e6db74> build process starting ...&#34;</span>
+</span></span><span style=display:flex><span>	docker build -t <span style=color:#66d9ef>$(</span>IMAGE<span style=color:#66d9ef>)</span> .
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>run-container:
+</span></span><span style=display:flex><span>	docker run -it --name go-helloworld --rm -p <span style=color:#e6db74>${</span>PORT<span style=color:#e6db74>}</span>:<span style=color:#e6db74>${</span>PORT<span style=color:#e6db74>}</span> <span style=color:#66d9ef>$(</span>IMAGE<span style=color:#66d9ef>)</span>
+</span></span></code></pre></div><ol start=3><li>Create <code>main.go</code> file:</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>vim main.go
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#f92672>package</span> <span style=color:#a6e22e>main</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> (
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;net/http&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;fmt&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;github.com/gin-gonic/gin&#34;</span>
+</span></span><span style=display:flex><span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>main</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>router</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>gin</span>.<span style=color:#a6e22e>Default</span>()
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>r</span>.<span style=color:#a6e22e>GET</span>(<span style=color:#e6db74>&#34;/helloworld&#34;</span>, <span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>c</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>gin</span>.<span style=color:#a6e22e>Context</span>) {
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>c</span>.<span style=color:#a6e22e>JSON</span>(<span style=color:#a6e22e>http</span>.<span style=color:#a6e22e>StatusOK</span>, <span style=color:#a6e22e>gin</span>.<span style=color:#a6e22e>H</span>{
+</span></span><span style=display:flex><span>			<span style=color:#e6db74>&#34;hello&#34;</span>: <span style=color:#e6db74>&#34;world&#34;</span>,
+</span></span><span style=display:flex><span>		})
+</span></span><span style=display:flex><span>	})
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>router</span>.<span style=color:#a6e22e>Run</span>(<span style=color:#e6db74>&#34;localhost:8080&#34;</span>)
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><ol start=4><li>Build the app via:</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>make build
+</span></span></code></pre></div><ol start=5><li>Run the app via:</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>make run
+</span></span></code></pre></div><p>Now, make some request via:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>curl http://localhost:8080/helloworld
+</span></span></code></pre></div><p>Output:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#f92672>{</span><span style=color:#e6db74>&#34;hello&#34;</span>:<span style=color:#e6db74>&#34;world&#34;</span><span style=color:#f92672>}</span>
+</span></span></code></pre></div><h3 id=the-problem-what-if-you-want-to-use-port-other-than-port-8080>The Problem: What if you want to use port other than port <code>8080</code>?</h3><p>We can use environment variable to dynamically specify different port on our application so we don&rsquo;t have to re-build it when we want to use port other than <code>8080</code>:</p><ol start=6><li>Setup environment variable on your code:</li></ol><p>We will be using <em><strong>OS</strong></em> package a built-in go package. Add the following code on the top of your <strong>hello-world-app</strong>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#f92672>import</span> (
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;net/http&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;github.com/gin-gonic/gin&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;fmt&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;os&#34;</span> <span style=color:#75715e>// package that can be use to interact with OS environment variable.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>)
+</span></span></code></pre></div><ol start=7><li>Create a variable that will get the port number using <code>os.getEnv</code> inside the <code>main()</code> function and <code>if</code> statement that if <code>PORT</code> env variable is not specified, the app will use the default port which is <code>8080</code>:</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#a6e22e>port</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>os</span>.<span style=color:#a6e22e>Getenv</span>(<span style=color:#e6db74>&#34;PORT&#34;</span>)
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>port</span> <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;&#34;</span>) {
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>port</span> = <span style=color:#e6db74>&#34;8080&#34;</span> <span style=color:#75715e>//will use default port
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>	}
+</span></span></code></pre></div><ol start=8><li>Add the port variable into the <code>r.Run()</code> function:</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#a6e22e>r</span>.<span style=color:#a6e22e>Run</span>(<span style=color:#e6db74>&#34;localhost:&#34;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>port</span>)
+</span></span></code></pre></div><ol start=9><li>Test and run it via:</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>export PORT<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;9090&#34;</span>
+</span></span><span style=display:flex><span>make run
+</span></span></code></pre></div><p>Output:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#f92672>[</span>*<span style=color:#f92672>]</span> Running the hello-world-app....
+</span></span><span style=display:flex><span>./main
+</span></span><span style=display:flex><span><span style=color:#f92672>[</span>GIN-debug<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>WARNING<span style=color:#f92672>]</span> Creating an Engine instance with the Logger and Recovery middleware already attached.
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>[</span>GIN-debug<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>WARNING<span style=color:#f92672>]</span> Running in <span style=color:#e6db74>&#34;debug&#34;</span> mode. Switch to <span style=color:#e6db74>&#34;release&#34;</span> mode in production.
+</span></span><span style=display:flex><span> - using env:   export GIN_MODE<span style=color:#f92672>=</span>release
+</span></span><span style=display:flex><span> - using code:  gin.SetMode<span style=color:#f92672>(</span>gin.ReleaseMode<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>[</span>GIN-debug<span style=color:#f92672>]</span> GET    /helloworld               --&gt; main.main.func1 <span style=color:#f92672>(</span><span style=color:#ae81ff>3</span> handlers<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>[</span>GIN-debug<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>WARNING<span style=color:#f92672>]</span> You trusted all proxies, this is NOT safe. We recommend you to set a value.
+</span></span><span style=display:flex><span>Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies <span style=color:#66d9ef>for</span> details.
+</span></span><span style=display:flex><span><span style=color:#f92672>[</span>GIN-debug<span style=color:#f92672>]</span> Listening and serving HTTP on localhost:9090
+</span></span></code></pre></div><p>As you can see at the line here:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#f92672>[</span>GIN-debug<span style=color:#f92672>]</span> Listening and serving HTTP on localhost:9090
+</span></span></code></pre></div><p>It is now using port other than <code>8080</code>!</p><ol start=10><li>Create a <code>Dockerfile</code>:</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>FROM golang:1.19-alpine
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>WORKDIR /opt/go-rest-helloworld
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>RUN apk update <span style=color:#f92672>&amp;&amp;</span> apk add curl make
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>ADD main.go /opt/go-rest-helloworld
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>RUN cd /opt/go-rest-helloworld <span style=color:#f92672>&amp;&amp;</span> make build
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>CMD <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;exec /opt/go-rest-helloworld/main&#34;</span><span style=color:#f92672>]</span>
+</span></span></code></pre></div><ol start=11><li>Test the docker image via:</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>export PORT<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;8888&#34;</span>
+</span></span><span style=display:flex><span>make run-container
+</span></span></code></pre></div><p>Source code for lab exercise can be found here at the labs folder: <strong>containerizing-golang-application</strong></p><footer class=footline></footer></div></div><div id=navigation><a class="nav nav-prev" href=/containerization/docker/creating-first-container/ title="Creating your first docker container"><i class="fa fa-chevron-left"></i></a>
+<a class="nav nav-next" href=/infrastructure-as-code/ title="Infrastructure As Code" style=margin-right:0><i class="fa fa-chevron-right"></i></a></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1681657570></script>
+<script src=/js/perfect-scrollbar.min.js?1681657570></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1681657570></script>
+<script src=/js/jquery.sticky.js?1681657570></script>
+<script src=/js/featherlight.min.js?1681657570></script>
+<script src=/js/highlight.pack.js?1681657570></script>
+<script>hljs.initHighlightingOnLoad()</script><script src=/js/modernizr.custom-3.6.0.js?1681657570></script>
+<script src=/js/learn.js?1681657570></script>
+<script src=/js/hugo-learn.js?1681657570></script>
+<script src=/mermaid/mermaid.js?1681657570></script>
+<script>mermaid.initialize({startOnLoad:!0})</script></body></html>
